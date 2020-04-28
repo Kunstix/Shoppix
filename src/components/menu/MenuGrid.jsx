@@ -48,9 +48,9 @@ class MenuGrid extends Component {
   render() {
     return (
       <div className='menu-grid'>
-        {this.state.sections.map(({ title, imgUrl, id, size }) => (
-          <MenuItem key={id} title={title} imgUrl={imgUrl} size={size} />
-        ))}
+        {this.state.sections.map(({ id, ...sectionProps }) => {
+          return <MenuItem key={id} {...sectionProps} />;
+        })}
       </div>
     );
   }
