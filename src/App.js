@@ -11,7 +11,7 @@ import { auth, createUserProfileDoc } from './firebase/firebaseUtils';
 import { setCurrentUser } from './redux/actions/userActions';
 import { selectCurrentUser } from './redux/selectors/userSelectors';
 
-import './app.css';
+import './App.css';
 
 class App extends Component {
   unsubscribeFromAuth = null;
