@@ -1,4 +1,4 @@
-.checkout-page {
+.checkout {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,9 +23,22 @@
     }
   }
 
-  .total {
+  .checkout-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
     margin-top: 30px;
-    margin-left: auto;
-    font-size: 36px;
+
+    .total {
+      font-size: 36px;
+    }
+  }
+
+  .test {
+    text-align: center;
+    font-size: 10px;
+    align-self: flex-end;
   }
 }
