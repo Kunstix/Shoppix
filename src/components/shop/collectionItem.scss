@@ -4,6 +4,7 @@
   align-items: center;
   width: 23%;
   height: 330px;
+  position: relative;
 
   .image {
     width: 100%;
@@ -27,6 +28,24 @@
 
     .price {
       width: 10%;
+    }
+  }
+
+  .custom-button {
+    width: 80%;
+    position: absolute;
+    top: 235px;
+    display: none;
+  }
+
+  &:hover {
+    .image {
+      opacity: 0.8;
+    }
+
+    .custom-button {
+      display: flex;
+      opacity: 0.85;
     }
   }
 }

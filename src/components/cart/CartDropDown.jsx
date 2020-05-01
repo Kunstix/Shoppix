@@ -1,5 +1,4 @@
 import React from 'react';
-
 import CustomButton from '../buttons/CustomButton';
 
 import './cartDropDown.scss';
