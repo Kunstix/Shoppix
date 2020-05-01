@@ -1,5 +1,5 @@
-const SHOP_DATA = [
-  {
+const SHOP_DATA = {
+  cakes: {
     id: 1,
     title: 'Cakes',
     routeName: 'cakes',
@@ -69,7 +69,7 @@ const SHOP_DATA = [
       }
     ]
   },
-  {
+  icecream: {
     id: 2,
     title: 'Icecream',
     routeName: 'icecream',
@@ -132,7 +132,7 @@ const SHOP_DATA = [
       }
     ]
   },
-  {
+  pralines: {
     id: 3,
     title: 'Pralines',
     routeName: 'pralines',
@@ -174,10 +174,10 @@ const SHOP_DATA = [
       }
     ]
   },
-  {
+  cookies: {
     id: 4,
     title: 'Cookies',
-    routeName: 'cookie',
+    routeName: 'cookies',
     items: [
       {
         id: 23,
@@ -230,7 +230,7 @@ const SHOP_DATA = [
       }
     ]
   },
-  {
+  chocolates: {
     id: 5,
     title: 'Chocolates',
     routeName: 'chocolates',
@@ -279,6 +279,6 @@ const SHOP_DATA = [
       }
     ]
   }
-];
+};
 
 export default SHOP_DATA;
