@@ -1,4 +1,9 @@
-import { TOGGLE_CART, ADD_CART_ITEM } from '../actions/types';
+import {
+  TOGGLE_CART,
+  ADD_CART_ITEM,
+  CLEAR_CART_ITEM,
+  REMOVE_CART_ITEM
+} from '../actions/types';
 
 const INITIAL_STATE = {
   hidden: true,
@@ -16,6 +21,18 @@ const cartReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         cartItems: addItemToCart(state.cartItems, action.payload)
+      };
+    case CLEAR_CART_ITEM:
+      return {
+        ...state,
+        cartItems: state.cartItems.filter(
+          cartItem => cartItem.id !== action.payload.id
+        )
+      };
+    case REMOVE_CART_ITEM:
+      return {
+        ...state,
+        cartItems: removeItemFromCart(state.cartItems, action.payload)
       };
     default:
       return state;
@@ -36,6 +53,26 @@ const addItemToCart = (cartItems, newItem) => {
   }
 
   return [...cartItems, { ...newItem, quantity: 1 }];
+};
+
+const removeItemFromCart = (cartItems, itemToRemove) => {
+  const existingCartItem = cartItems.find(
+    cartItem => cartItem.id === itemToRemove.id
+  );
+
+  if (existingCartItem.quantity === 1) {
+    return cartItems.filter(cartItem => cartItem.id !== itemToRemove.id);
+  }
+
+  if (existingCartItem.quantity > 0) {
+    return cartItems.map(cartItem =>
+      cartItem.id === itemToRemove.id
+        ? { ...cartItem, quantity: cartItem.quantity - 1 }
+        : cartItem
+    );
+  }
+
+  return [...cartItems];
 };
 
 export default cartReducer;
