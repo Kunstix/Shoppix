@@ -6,7 +6,7 @@ import CustomButton from '../buttons/CustomButton';
 
 import './signUp.scss';
 
-const SignUp = () => {
+const SignUp = ({ signUpWithEmail }) => {
   const [userCredentials, setUserCredentials] = useState({
     displayName: '',
     email: '',
@@ -24,13 +24,12 @@ const SignUp = () => {
       return;
     }
 
-    this.props.signUpWithEmail(email, password, displayName);
+    signUpWithEmail(email, password, displayName);
   };
 
   const handleChange = event => {
     const { value, name } = event.target;
-
-    setUserCredentials(...userCredentials, { [name]: value });
+    setUserCredentials({ ...userCredentials, [name]: value });
   };
 
   return (

@@ -9,8 +9,8 @@ import CustomButton from '../buttons/CustomButton';
 
 import './signIn.scss';
 
-const SignIn = () => {
-  const [userCredentials, setUserCredentials] = useState({
+const SignIn = ({ signInWithGoogle, signInWithEmail }) => {
+  const [userCredentials, setCredentials] = useState({
     email: '',
     password: ''
   });
@@ -19,13 +19,12 @@ const SignIn = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    this.props.signInWithEmail(email, password);
+    signInWithEmail(email, password);
   };
 
   const handleChange = event => {
     const { value, name } = event.target;
-
-    setUserCredentials({ ...userCredentials, [name]: value });
+    setCredentials({ ...userCredentials, [name]: value });
   };
 
   // const { email, password } = this.state;
@@ -53,11 +52,7 @@ const SignIn = () => {
         />
         <div className='buttons'>
           <CustomButton type='submit'> Sign in </CustomButton>
-          <CustomButton
-            type='button'
-            onClick={this.props.signInWithGoogle}
-            isGoogleSignIn
-          >
+          <CustomButton type='button' onClick={signInWithGoogle} isGoogleSignIn>
             Sign in with Google
           </CustomButton>
         </div>
