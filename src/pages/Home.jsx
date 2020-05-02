@@ -1,11 +1,11 @@
 import React from 'react';
 import MenuGrid from '../components/menu/MenuGrid';
-import './home.scss';
+import { HomeContainer } from './home.styles';
 
 const Home = () => (
-  <div className='home'>
+  <HomeContainer>
     <MenuGrid />
-  </div>
+  </HomeContainer>
 );
 
 export default Home;
