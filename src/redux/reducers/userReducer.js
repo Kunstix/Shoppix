@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER } from '../actions/types';
+import { SIGN_IN, SIGN_OUT } from '../actions/types';
 
 const INITIAL_STATE = {
   currentUser: null
@@ -6,10 +6,15 @@ const INITIAL_STATE = {
 
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case SET_CURRENT_USER:
+    case SIGN_IN:
       return {
         ...state,
         currentUser: action.payload
+      };
+    case SIGN_OUT:
+      return {
+        ...state,
+        currentUser: null
       };
     default:
       return state;

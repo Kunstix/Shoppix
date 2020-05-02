@@ -1,9 +1,11 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
+import {
+  signInWithEmail,
+  signInWithGoogle
+} from '../../redux/actions/userActions';
 import FormInput from '../formInput/FormInput';
 import CustomButton from '../buttons/CustomButton';
-
-import { auth, signInWithGoogle } from '../../firebase/firebaseUtils';
 
 import './signIn.scss';
 
@@ -13,23 +15,12 @@ class SignIn extends React.Component {
     password: ''
   };
 
-  handleSubmit = async event => {
+  handleSubmit = event => {
     event.preventDefault();
 
     const { email, password } = this.state;
 
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-
-      this.setState({
-        email: '',
-        password: ''
-      });
-    } catch (err) {
-      console.log('User creation failed', err);
-    }
-
-    this.setState({ email: '', password: '' });
+    this.props.signInWithEmail(email, password);
   };
 
   handleChange = event => {
@@ -66,7 +57,7 @@ class SignIn extends React.Component {
             <CustomButton type='submit'> Sign in </CustomButton>
             <CustomButton
               type='button'
-              onClick={signInWithGoogle}
+              onClick={this.props.signInWithGoogle}
               isGoogleSignIn
             >
               Sign in with Google
@@ -78,4 +69,4 @@ class SignIn extends React.Component {
   }
 }
 
-export default SignIn;
+export default connect(null, { signInWithEmail, signInWithGoogle })(SignIn);
