@@ -4,6 +4,7 @@ export const SignInContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 45%;
+  padding: 10px;
 
   @media screen and (max-width: 800px) {
     padding-bottom: 50px;
@@ -19,6 +20,7 @@ export const SignInContainer = styled.div`
 
 export const SignInTitle = styled.h2`
   margin: 10px 0;
+  border-bottom: 1px solid #7e685a;
 `;
 
 export const ButtonsContainer = styled.div`
