@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   min-width: 30%;
-  height: 240px;
+  height: 30vh;
   border: 1px solid black;
   margin: 0 7.5px 15px;
   overflow: hidden;
@@ -18,7 +18,7 @@
   }
 
   &.large {
-    height: 380px;
+    height: 45vh;
   }
 
   .background {
@@ -64,5 +64,19 @@
       font-weight: lighter;
       font-size: 16px;
     }
+  }
+
+  @media screen and (max-width: 800px) {
+    height: 30vh;
+    width: 40%;
+
+    &.large {
+      height: 30vh;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    height: 30vh;
+    width: 100%;
   }
 }

@@ -11,6 +11,13 @@
   right: 40px;
   z-index: 5;
 
+  @media screen and (max-width: 800px) {
+    width: 90%;
+    height: 70vh;
+    top: 70px;
+    right: 10px;
+  }
+
   .cart-items {
     display: flex;
     flex-direction: column;

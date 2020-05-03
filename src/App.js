@@ -10,7 +10,7 @@ import SignInAndSignUp from './pages/SignInAndSignup';
 import { fetchUser } from './redux/actions/userActions';
 import { selectCurrentUser } from './redux/selectors/userSelectors';
 
-import './App.css';
+import { GlobalStyle } from './global.styles';
 
 const App = ({ fetchUser, currentUser }) => {
   useEffect(() => {
@@ -19,6 +19,7 @@ const App = ({ fetchUser, currentUser }) => {
 
   return (
     <div className='App'>
+      <GlobalStyle />
       <Header />
       <Switch>
         <Route exact path='/' component={Home} />
