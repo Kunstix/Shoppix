@@ -1,16 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import Home from './pages/Home';
-import Shop from './pages/Shop';
-import Checkout from './pages/Checkout';
+
 import Header from './components/header/Header';
-import SignInAndSignUp from './pages/SignInAndSignup';
+import Spinner from './components/spinner/Spinner';
+import ErrorBoundary from './components/error/ErrorBoundary';
 import { fetchUser } from './redux/actions/userActions';
 import { selectCurrentUser } from './redux/selectors/userSelectors';
 
 import { GlobalStyle } from './global.styles';
+
+const Home = lazy(() => import('./pages/Home'));
+const Shop = lazy(() => import('./pages/Shop'));
+const Checkout = lazy(() => import('./pages/Checkout'));
+const SignInAndSignUp = lazy(() => import('./pages/SignInAndSignUp'));
 
 const App = ({ fetchUser, currentUser }) => {
   useEffect(() => {
@@ -22,16 +26,20 @@ const App = ({ fetchUser, currentUser }) => {
       <GlobalStyle />
       <Header />
       <Switch>
-        <Route exact path='/' component={Home} />
-        <Route path='/shop' component={Shop} />
-        <Route exact path='/checkout' component={Checkout} />
-        <Route
-          exact
-          path='/signin'
-          render={() =>
-            currentUser ? <Redirect to='/' /> : <SignInAndSignUp />
-          }
-        />
+        <ErrorBoundary>
+          <Suspense fallback={<Spinner />}>
+            <Route exact path='/' component={Home} />
+            <Route path='/shop' component={Shop} />
+            <Route exact path='/checkout' component={Checkout} />
+            <Route
+              exact
+              path='/signin'
+              render={() =>
+                currentUser ? <Redirect to='/' /> : <SignInAndSignUp />
+              }
+            />
+          </Suspense>
+        </ErrorBoundary>
       </Switch>
     </div>
   );
